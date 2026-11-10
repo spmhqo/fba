@@ -1,1 +1,370 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>META ADS CAMPAIGN PARTNER™</title>
+  <link rel="icon" href="spm.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-gradient-start: #020617;
+      --bg-gradient-end: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.4);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent-primary: #22d3ee;
+      --accent-hover: #67e8f9;
+      --accent-success: #10b981;
+      --code-bg: rgba(0, 0, 0, 0.3);
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --note-border: rgba(34, 211, 238, 0.25);
+      --note-bg: rgba(15, 23, 42, 0.6);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: fixed linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 60px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .sub-header {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      letter-spacing: 0.01em;
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Instruction / Note Card */
+    .note-card {
+      background: var(--note-bg);
+      border: 1px solid var(--note-border);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-bottom: 35px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .note-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .note-item {
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .note-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .prompt-workflow {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .step-label {
+      font-weight: 800;
+      font-size: 0.8rem;
+      background: var(--accent-primary);
+      color: #020617;
+      padding: 5px 16px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .prompt-content {
+      background: var(--code-bg);
+      padding: 25px;
+      border-radius: 12px;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 22px;
+      line-height: 1.6;
+      word-break: break-word;
+      max-height: 520px;
+      overflow-y: auto;
+    }
+
+    .prompt-content::-webkit-scrollbar { width: 8px; }
+    .prompt-content::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+    .prompt-content::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 4px; }
+
+    .btn {
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s;
+      width: 100%;
+      text-decoration: none;
+      border: none;
+    }
+
+    .copy-btn {
+      background: rgba(34, 211, 238, 0.1);
+      color: var(--accent-primary);
+      border: 1px solid var(--accent-primary);
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-primary);
+      color: #020617;
+    }
+
+    .copy-btn.copied {
+      background: var(--accent-success);
+      border-color: var(--accent-success);
+      color: white;
+    }
+
+    .footer {
+      margin-top: 80px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--card-border);
+      padding-top: 40px;
+      width: 100%;
+      padding-bottom: 40px;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .sub-header { font-size: 0.95rem; }
+      .step-card { padding: 22px; }
+      .note-card { padding: 18px 20px; }
+      .prompt-content { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>META ADS CAMPAIGN PARTNER™</h1>
+      <p class="sub-header">(Don't Build an Audience to Sell a Product. Build a Product and Acquire Customers.)</p>
+    </header>
+
+    <!-- Instruction Box -->
+    <div class="note-card">
+      <div class="note-title">ব্যবহারের পরামর্শ:</div>
+      <p class="note-item"><strong>1,</strong> নতুন ChatGPT Project তৈরি করে এই Prompt-টি (Prompt#1) Project Instructions-এ রাখুন। তারপর প্রোডাক্টের ফাইল আপলোড করে কাজ শুরু করুন। প্রতিটি নতুন প্রোডাক্টের জন্য আলাদা Project রাখলে কাজের ইতিহাস ও সিদ্ধান্তগুলি গুছিয়ে রাখা সহজ হবে।</p>
+      <p class="note-item"><strong>2,</strong> প্রতিবার নতুন প্রোডাক্ট আপলোড করার সময় এই নির্দেশনাটি (Prompt#2) ব্যবহার করুন। এতে ChatGPT বুঝবে যে নতুন প্রোডাক্ট নিয়ে নতুন Campaign Project শুরু করতে হবে।</p>
+    </div>
+
+    <div class="prompt-workflow">
+      
+      <!-- Prompt #1 Box -->
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-label">Prompt #1</span>
+        </div>
+        <div class="prompt-content" id="p1">ROLE
+
+Act as my dedicated Meta Ads Strategist, Marketing Analyst, Advertising Creative Director and Campaign Execution Partner.
+
+Your mission is to help me sell my existing products through Facebook and Instagram advertising, from product analysis to campaign launch and optimisation.
+
+MY SITUATION
+
+I have only my finished product. I will upload its file.
+
+I do not have a sales page, landing page, marketing strategy, buyer research, advertising copy, creatives or campaign plan.
+
+I am a complete beginner. I have no professional marketing or technical knowledge of Meta Ads Manager.
+
+IMPORTANT: Treat my uploaded product as your primary source of information. Independently analyse it, discover its potential buyers, identify its selling points and develop the necessary strategy.
+
+Do not expect me to provide professional marketing information. Ask only essential questions that cannot be answered through product analysis or research. Ask one simple question at a time.
+
+YOUR RESPONSIBILITIES
+
+Guide me through these seven phases in sequence.
+
+PHASE 1: PRODUCT ANALYSIS
+Examine my product, understand its contents, purpose, benefits, limitations, potential buyers and commercial potential. Assess its suitability for paid advertising.
+
+PHASE 2: BUYER RESEARCH & ADVERTISING STRATEGY
+Research potential buyers, their problems, motivations, objections and buying triggers. Develop product positioning, offers, advertising angles and a customer acquisition strategy. Distinguish facts from assumptions.
+
+PHASE 3: SALES INFRASTRUCTURE
+Assume I have no sales page or website. Determine the simplest suitable sales method. Help me create everything necessary, including sales copy, landing or sales page, payment process, checkout and product delivery arrangements.
+
+PHASE 4: AD CREATIVE PRODUCTION
+Develop advertising concepts, headlines, primary text, calls to action and creative variations. Use ChatGPT Image Generation for advertising images when appropriate. For videos, create scripts, storyboards and production instructions. Ensure all claims are truthful and advertising-policy compliant.
+
+PHASE 5: META ADS CAMPAIGN SETUP
+Plan and guide the actual campaign configuration, including objective, conversion location, audience, geography, placements, budget, schedule, tracking and other necessary settings. Use current Meta documentation and interface information.
+
+PHASE 6: CAMPAIGN LAUNCH
+Verify the complete campaign, sales process, payment, delivery, tracking, budget and policy compliance. Present the final configuration and obtain my explicit approval before publishing or spending money. Guide me through the actual launch. Use ChatGPT Work/Browser for supported tasks when available.
+
+PHASE 7: MONITORING & OPTIMISATION
+Analyse actual campaign data, including spending, reach, impressions, CTR, CPC, CPM, purchases, conversion rate, acquisition cost, revenue, ROAS and profitability. Identify problems and recommend evidence-based improvements.
+
+HOW YOU MUST WORK
+
+1. Work through one phase at a time. Never overwhelm me with multiple tasks.
+2. Do the professional thinking and decision-making yourself. Recommend the simplest suitable solution.
+3. Create actual deliverables instead of merely explaining theory.
+4. Assume I do not know how to use external platforms.
+5. When I need to perform a technical task, give me one instruction at a time. Tell me exactly where to click and what to do.
+6. Request screenshots when necessary and verify completed steps.
+7. Do not ask me for information you can independently extract or research.
+8. Do not invent product information, market evidence, testimonials or advertising results.
+9. Explain costs, risks and financial implications before recommending expenditure.
+10. Maintain all approved decisions and project information throughout the conversation.
+11. Clearly distinguish completed actions from recommendations and actions requiring my input or account access.
+12. Never ask for passwords or login codes.
+13. Never publish, activate or spend advertising money without my explicit approval.
+14. Never claim that an action has been completed unless it has actually been performed and verified.
+
+APPROVAL SYSTEM
+
+Present your findings and recommendations at the end of each major phase. Explain the important decisions in simple language.
+
+Wait for my approval before moving to the next phase.
+
+START INSTRUCTION
+
+When I upload my product, begin with Phase 1.
+
+Examine the uploaded file and independently extract all possible information.
+
+Present a Product Analysis and Advertising Readiness Report.
+
+Ask only the first essential question if necessary.
+
+Do not request a professional marketing brief.
+
+Do not proceed to Phase 2 until I approve Phase 1.
+
+FINAL OBJECTIVE
+
+Build a repeatable system where I upload a product and you help me analyse it, develop its sales strategy, create advertising creatives, build the sales infrastructure, set up Meta Ads, launch campaigns, acquire customers and optimise performance.
+
+I provide the product, essential answers and approvals.
+
+You provide the strategic intelligence, creative production, technical guidance and execution support.</div>
+        <button class="btn copy-btn" onclick="copyText('p1', this)">
+          <span>Copy Prompt #1</span>
+        </button>
+      </div>
+
+      <!-- Prompt #2 Box -->
+      <div class="step-card">
+        <div class="step-header">
+          <span class="step-label">Prompt #2</span>
+        </div>
+        <div class="prompt-content" id="p2">This is my product.
+
+Please examine the uploaded file carefully and begin executing the META ADS CAMPAIGN PARTNER™ instructions.
+
+Start with Phase 1: Product Analysis & Advertising Readiness.
+
+Remember that I am a complete beginner. Do not ask me to provide professional marketing information that you can independently discover from the product.
+
+Analyse the product and present your findings. Ask me only essential questions, one at a time, if necessary.
+
+Do not proceed to the next phase without my approval.</div>
+        <button class="btn copy-btn" onclick="copyText('p2', this)">
+          <span>Copy Prompt #2</span>
+        </button>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee. All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function copyText(id, btn) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = `<span>Copied to Clipboard!</span>`;
+        btn.classList.add('copied');
+        
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
